@@ -1,0 +1,22 @@
+{
+  "name": "type-class",
+  "version": "0.0.1",
+  "description": "typeclass PoC",
+  "main": "src/index.mjs",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha",
+    "format": "prettier --write ."
+  },
+  "author": "Xavier Garcia Buils <xgbuils@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "expect": "^26.6.2",
+    "mocha": "^8.2.1"
+  },
+  "devDependencies": {
+    "prettier": "^2.2.1"
+  }
+}
