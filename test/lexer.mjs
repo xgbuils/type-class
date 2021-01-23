@@ -13,6 +13,7 @@ const toTokens = (lexer) => {
 
 const COMMA = "COMMA";
 const TYPE = "TYPE";
+const TYPE_VARIABLE = 'TYPE_VARIABLE';
 const FUNCTION_OPERATOR = "FUNCTION_OPERATOR";
 const METHOD_OPERATOR = "METHOD_OPERATOR";
 const PARENTHESIS_OPEN = "PARENTHESIS_OPEN";
@@ -20,12 +21,12 @@ const PARENTHESIS_CLOSE = "PARENTHESIS_CLOSE";
 
 describe("Lexer", function () {
   describe("success", () => {
-    it("a -> b", function () {
-      const lexer = Lexer("a -> b");
+    it("a -> Bool", function () {
+      const lexer = Lexer("a -> Bool");
 
       expect(toTokens(lexer)).toEqual([
         {
-          type: TYPE,
+          type: TYPE_VARIABLE,
           value: "a",
         },
         {
@@ -33,7 +34,7 @@ describe("Lexer", function () {
         },
         {
           type: TYPE,
-          value: "b",
+          value: "Bool",
         },
       ]);
     });
@@ -43,28 +44,28 @@ describe("Lexer", function () {
 
       expect(toTokens(lexer)).toEqual([
         {
-          type: TYPE,
+          type: TYPE_VARIABLE,
           value: "a",
         },
         {
           type: METHOD_OPERATOR,
         },
         {
-          type: TYPE,
+          type: TYPE_VARIABLE,
           value: "b",
         },
       ]);
     });
 
-    it("(a , b)", function () {
-      const lexer = Lexer("(a , b)");
+    it("(a , Integer)", function () {
+      const lexer = Lexer("(a , Integer)");
 
       expect(toTokens(lexer)).toEqual([
         {
           type: PARENTHESIS_OPEN,
         },
         {
-          type: TYPE,
+          type: TYPE_VARIABLE,
           value: "a",
         },
         {
@@ -72,7 +73,7 @@ describe("Lexer", function () {
         },
         {
           type: TYPE,
-          value: "b",
+          value: "Integer",
         },
         {
           type: PARENTHESIS_CLOSE,

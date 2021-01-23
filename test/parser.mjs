@@ -6,7 +6,7 @@ import Parser from "../src/parser.mjs";
 describe("Parser", () => {
   describe("success", () => {
     it("a", () => {
-      const mainType = {
+      const selfType = {
         name: "a",
       };
       const typeBuilder = TypeBuilder(mainType);

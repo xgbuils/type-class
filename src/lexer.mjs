@@ -21,7 +21,13 @@ export const constantTokens = [
   },
 ];
 
-const typeRegExp = /[a-z]+/g;
+const regExpTokens = [{
+  value: /[A-Z][a-zA-Z]*/gy,
+  type: 'TYPE',
+}, {
+  value: /[a-z][a-zA-Z]*/gy,
+  type: 'TYPE_VARIABLE',
+}]
 
 const Lexer = (str) => {
   let position = 0;
@@ -44,14 +50,17 @@ const Lexer = (str) => {
         }
       }
 
-      typeRegExp.lastIndex = position;
-      const [result] = typeRegExp.exec(str) || [];
-      if (result) {
-        position += result.length;
-        return {
-          type: "TYPE",
-          value: result,
-        };
+      for (let index = 0; index < regExpTokens.length; ++index) {
+        const {type, value: regExp} = regExpTokens[index];
+        regExp.lastIndex = position;
+        const [result] = regExp.exec(str) || [];
+        if (result) {
+          position += result.length;
+          return {
+            type,
+            value: result,
+          };
+        }
       }
     },
   };

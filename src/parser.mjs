@@ -1,4 +1,4 @@
-const TOKEN_TYPE = "TYPE";
+const TOKEN_TYPE = "TYPE_VARIABLE";
 
 const STATE_INIT = "INIT";
 
